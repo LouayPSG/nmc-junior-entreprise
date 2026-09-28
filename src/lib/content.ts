@@ -1,0 +1,71 @@
+import siteData from "@/data/site.json";
+import servicesData from "@/data/services.json";
+import projectsData from "@/data/projects.json";
+import eventsData from "@/data/events.json";
+import teamData from "@/data/team.json";
+import partnersData from "@/data/partners.json";
+import statsData from "@/data/stats.json";
+import {
+  ContactInfo,
+  EventsJson,
+  NavItem,
+  PartnersJson,
+  ProjectsJson,
+  ServicesJson,
+  SiteJson,
+  SocialLinks,
+  StatsJson,
+  TeamJson,
+} from "./types";
+
+/* Le contenu éditorial vivant dans src/data/*.json est typé ici une seule fois.
+   Pour mettre le site à jour : éditer le JSON concerné, puis redéployer. */
+
+export const site = siteData as SiteJson;
+export const services = servicesData as ServicesJson;
+export const projects = projectsData as ProjectsJson;
+export const events = eventsData as EventsJson;
+export const team = teamData as TeamJson;
+export const partners = partnersData as PartnersJson;
+export const stats = statsData as StatsJson;
+
+export const nav: NavItem[] = site.nav;
+export const contact: ContactInfo = site.contact;
+export const social: SocialLinks = site.social;
+
+/* Helpers métier ---------------------------------------------------------- */
+
+/** Services affichés (tous en l'état : non confirmés => rendu placeholder visible) */
+export function getAllServices() {
+  return services.services;
+}
+
+/** Projets mis en avant sur la page d'accueil (2 à 3 selon featuredCount) */
+export function getFeaturedProjects(): ProjectItem[] {
+  return projects.projects.filter((p) => p.featured).slice(0, projects.featuredCount);
+}
+
+/** Projets triés : à la une d'abord, puis par année décroissante */
+export function getAllProjects(): ProjectItem[] {
+  return [...projects.projects].sort((a, b) => {
+    if (a.featured !== b.featured) return a.featured ? -1 : 1;
+    return (b.year || "").localeCompare(a.year || "");
+  });
+}
+
+/** Événements triés du plus récent au plus ancien */
+export function getSortedEvents(): EventItemSorted[] {
+  return [...events.events].sort((a, b) => b.date.localeCompare(a.date));
+}
+
+/** Chiffres clés confirmés uniquement (aucun chiffre fictif affiché) */
+export function getConfirmedStats() {
+  return stats.stats.filter((s) => s.confirmed && typeof s.value === "number");
+}
+
+export function hasConfirmedStats() {
+  return getConfirmedStats().length > 0;
+}
+
+type ProjectItem = ProjectsJson["projects"][number];
+type EventItemSorted = EventsJson["events"][number];

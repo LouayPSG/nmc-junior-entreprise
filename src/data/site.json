@@ -1,0 +1,35 @@
+{
+  "name": "NMC Junior Entreprise",
+  "fullName": "Neapolis Marketing Consulting Junior Entreprise",
+  "baseline": "Innover ensemble pour transformer les projets en réussites.",
+  "shortDescription": "NMC Junior Entreprise — FSEGN Nabeul. Innover ensemble pour transformer les projets en réussites.",
+  "contact": {
+    "phone": "+216 97 116 578",
+    "phoneHref": "+21697116578",
+    "email": "nmc.juniorentreprise@gmail.com",
+    "address": "Faculté des Sciences Économiques et de Gestion de Nabeul, Mrezga, Nabeul 8000",
+    "addressShort": "FSEGN — Mrezga, Nabeul 8000"
+  },
+  "social": {
+    "instagram": "https://www.instagram.com/nmc_junior_entreprise",
+    "facebook": "https://www.facebook.com/nmcje",
+    "website": "https://nmcje.com"
+  },
+  "nav": [
+    { "label": "Accueil", "href": "/" },
+    { "label": "À propos", "href": "/a-propos" },
+    { "label": "Services", "href": "/services" },
+    { "label": "Projets", "href": "/projets" },
+    { "label": "Événements", "href": "/evenements" },
+    { "label": "Équipe", "href": "/equipe" }
+  ],
+  "cta": {
+    "header": "Travaillons ensemble",
+    "join": "Rejoindre NMC",
+    "contact": "Nous contacter"
+  },
+  "legal": {
+    "mentions": "/mentions-legales",
+    "privacy": "/politique-de-confidentialite"
+  }
+}

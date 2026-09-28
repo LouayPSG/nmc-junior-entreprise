@@ -1,0 +1,431 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   NMC Junior Entreprise — Design System
+   Charte Brand Book : rouge #A22323 · noir #000000 · blanc #FFFFFF
+   Typographies : League Gothic (display) · Poppins (texte)
+   ============================================================ */
+
+/* ---- Polices auto-hébergées (OFL) ---- */
+@font-face {
+  font-family: "League Gothic";
+  src: url("/assets/fonts/league-gothic-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  font-stretch: normal;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("/assets/fonts/poppins-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("/assets/fonts/poppins-latin-500-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("/assets/fonts/poppins-latin-600-normal.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("/assets/fonts/poppins-latin-700-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    /* Couleurs (Brand Book) */
+    --color-red: #a22323;
+    --color-red-dark: #8a1d1d;
+    --color-black: #000000;
+    --color-white: #ffffff;
+    --color-gray-900: #1a1a1a;
+    --color-gray-100: #f5f5f5;
+    --color-gray-300: #e0e0e0;
+
+    /* Typographies */
+    --font-display: "League Gothic", "Arial Narrow", Impact, sans-serif;
+    --font-body: "Poppins", "Segoe UI", Arial, sans-serif;
+
+    /* Espacements — échelle 8px */
+    --space-1: 8px;
+    --space-2: 16px;
+    --space-3: 24px;
+    --space-4: 32px;
+    --space-5: 48px;
+    --space-6: 64px;
+    --space-7: 96px;
+
+    /* Rayons / ombres / conteneur */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.12);
+    --container-max: 1280px;
+    --gutter: 24px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white font-body text-black antialiased;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  ::selection {
+    background: var(--color-red);
+    color: var(--color-white);
+  }
+
+  /* Focus visible — accessibilité clavier */
+  :focus-visible {
+    outline: 2px solid var(--color-red);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* ---- Conteneur ---- */
+  .container-nmc {
+    @apply mx-auto w-full;
+    max-width: var(--container-max);
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  @media (min-width: 768px) {
+    .container-nmc {
+      padding-left: var(--gutter);
+      padding-right: var(--gutter);
+    }
+  }
+
+  /* ---- Typographie éditoriale ---- */
+  .font-display {
+    font-family: var(--font-display);
+    font-stretch: condensed;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 1.05;
+  }
+  .h1-display {
+    font-family: var(--font-display);
+    font-stretch: condensed;
+    text-transform: uppercase;
+    line-height: 1.02;
+    letter-spacing: 0.01em;
+    font-size: clamp(2.75rem, 6.5vw, 4.75rem);
+  }
+  .h2-display {
+    font-family: var(--font-display);
+    font-stretch: condensed;
+    text-transform: uppercase;
+    line-height: 1.05;
+    letter-spacing: 0.01em;
+    font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+  }
+  .h3-display {
+    font-family: var(--font-display);
+    font-stretch: condensed;
+    text-transform: uppercase;
+    line-height: 1.1;
+    font-size: clamp(1.35rem, 2vw, 1.75rem);
+  }
+  .stat-number {
+    font-family: var(--font-display);
+    font-stretch: condensed;
+    text-transform: uppercase;
+    line-height: 1;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+  }
+  /* Mot d'accent rouge (image d'un mot dans les titres) */
+  .accent {
+    color: var(--color-red);
+  }
+
+  /* Eyebrow : libellé au-dessus des titres de section */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em];
+    color: var(--color-red);
+  }
+  .eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 2px;
+    background: var(--color-red);
+  }
+
+  /* ---- Boutons ---- */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 text-sm font-semibold uppercase tracking-wide no-underline;
+    min-height: 48px;
+    padding: 14px 28px;
+    border-radius: var(--radius-sm);
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+      transform 0.15s ease, box-shadow 0.2s ease;
+  }
+  .btn-primary {
+    background: var(--color-red);
+    color: var(--color-white);
+  }
+  .btn-primary:hover {
+    background: var(--color-red-dark);
+    transform: scale(1.02);
+  }
+  .btn-primary:active {
+    transform: scale(0.99);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-black);
+    border: 1px solid currentColor;
+  }
+  .btn-secondary:hover {
+    background: var(--color-black);
+    color: var(--color-white);
+    transform: scale(1.02);
+  }
+  .btn-secondary-dark {
+    background: transparent;
+    color: var(--color-white);
+    border: 1px solid currentColor;
+  }
+  .btn-secondary-dark:hover {
+    background: var(--color-white);
+    color: var(--color-black);
+    transform: scale(1.02);
+  }
+  .btn-sm {
+    min-height: 42px;
+    padding: 10px 20px;
+  }
+
+  /* ---- Cartes ---- */
+  .card {
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-gray-300);
+    background: var(--color-white);
+    box-shadow: var(--shadow-card);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+  }
+  .card-dark {
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: var(--color-gray-900);
+    box-shadow: var(--shadow-card);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card-dark:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  /* ---- Liens avec souligné animé ---- */
+  .link-underline {
+    position: relative;
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--color-red);
+  }
+  .link-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 100%;
+    height: 2px;
+    background: var(--color-red);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+  .link-underline:hover::after,
+  .link-underline:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  /* ---- Badge / tag ---- */
+  .tag {
+    @apply inline-block text-xs font-semibold uppercase tracking-wider;
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    border: 1px solid currentColor;
+  }
+  .tag-red {
+    color: var(--color-red);
+  }
+  .tag-white {
+    color: var(--color-white);
+  }
+
+  /* ---- Formulaire ---- */
+  .field-label {
+    @apply block text-sm font-semibold;
+    margin-bottom: 8px;
+  }
+  .field-input {
+    @apply w-full text-base;
+    min-height: 48px;
+    padding: 12px 16px;
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--radius-sm);
+    background: var(--color-white);
+    color: var(--color-black);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  textarea.field-input {
+    min-height: 140px;
+    resize: vertical;
+  }
+  .field-input:focus {
+    outline: none;
+    border-color: var(--color-red);
+    box-shadow: 0 0 0 2px var(--color-red);
+  }
+  .field-error {
+    @apply mt-1 text-sm;
+    color: var(--color-red);
+  }
+
+  /* ---- Placeholder "contenu à venir" (bien visible, pas de faux contenu) ---- */
+  .placeholder-box {
+    @apply flex items-center justify-center text-center text-sm font-semibold uppercase tracking-widest;
+    min-height: 180px;
+    padding: 24px;
+    border: 2px dashed var(--color-gray-300);
+    border-radius: var(--radius-md);
+    background: var(--color-gray-100);
+    color: #666666;
+  }
+  .placeholder-box-dark {
+    @apply flex items-center justify-center text-center text-sm font-semibold uppercase tracking-widest;
+    min-height: 180px;
+    padding: 24px;
+    border: 2px dashed rgba(255, 255, 255, 0.25);
+    border-radius: var(--radius-md);
+    background: var(--color-gray-900);
+    color: rgba(255, 255, 255, 0.6);
+  }
+  .note-pending {
+    @apply inline-block text-xs font-semibold uppercase tracking-widest;
+    color: var(--color-red);
+  }
+
+  /* ---- Motif géométrique du hero (hommage au logotype) ---- */
+  .hero-motif {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .hero-motif::before {
+    content: "";
+    position: absolute;
+    right: -12%;
+    top: -30%;
+    width: 58%;
+    height: 160%;
+    background: linear-gradient(
+      115deg,
+      transparent 0%,
+      transparent 42%,
+      rgba(162, 35, 35, 0.55) 42%,
+      rgba(162, 35, 35, 0.55) 46%,
+      transparent 46%
+    );
+    transform: rotate(8deg);
+  }
+  .hero-motif::after {
+    content: "";
+    position: absolute;
+    right: 6%;
+    top: 18%;
+    width: 220px;
+    height: 220px;
+    border: 2px solid rgba(162, 35, 35, 0.35);
+    transform: rotate(45deg);
+  }
+  @media (max-width: 767px) {
+    .hero-motif::after {
+      display: none;
+    }
+  }
+
+  /* ---- Animation d'entrée au scroll (IntersectionObserver, 1 fois) ---- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* ---- Bandeau de logos partenaires ---- */
+  .logo-wall {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  @media (min-width: 640px) {
+    .logo-wall {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (min-width: 1024px) {
+    .logo-wall {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+  .logo-cell {
+    @apply flex items-center justify-center;
+    height: 96px;
+    padding: 16px;
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--radius-md);
+    background: var(--color-white);
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "status": "pending_content",
+  "notice": "Effectif à fournir par NMC : nom, rôle, pôle, photo, LinkedIn. Structure des pôles à confirmer.",
+  "poles": [
+    {
+      "id": "bureau",
+      "name": "Bureau exécutif",
+      "members": []
+    },
+    {
+      "id": "marketing",
+      "name": "Pôle Marketing",
+      "members": []
+    },
+    {
+      "id": "etudes",
+      "name": "Pôle Études & Projets",
+      "members": []
+    },
+    {
+      "id": "finance",
+      "name": "Pôle Finance",
+      "members": []
+    },
+    {
+      "id": "rh",
+      "name": "Pôle Ressources Humaines",
+      "members": []
+    }
+  ]
+}
