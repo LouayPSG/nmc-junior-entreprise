@@ -81,7 +81,7 @@ export default function Navbar() {
             <Icon name="mail" size={18} />
           </a>
           <Link href="/contact" className="btn btn-primary btn-sm">
-            Travaillons ensemble
+            Parler de mon projet
           </Link>
         </div>
 
@@ -124,7 +124,7 @@ export default function Navbar() {
           </ul>
           <div className="mt-6 flex flex-col gap-3">
             <Link href="/contact" className="btn btn-primary w-full">
-              Travaillons ensemble
+              Parler de mon projet
             </Link>
             <a href={`tel:${contact.phoneHref}`} className="btn btn-secondary w-full">
               {contact.phone}

@@ -2,9 +2,9 @@ import Link from "next/link";
 import Logo from "./Logo";
 import Icon from "./Icon";
 import SocialLinks from "./SocialLinks";
-import { nav, contact } from "@/lib/content";
+import { nav, contact, site } from "@/lib/content";
 
-/** Footer global — structure PRD §DD : logo, description, nav, contact, sociaux, légal */
+/** Footer global — logo, description, nav, contact, sociaux, légal */
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
@@ -14,8 +14,8 @@ export default function Footer() {
         <div className="flex flex-col gap-4">
           <Logo variant="light" />
           <p className="max-w-xs text-sm leading-relaxed text-white/70">
-            NMC Junior Entreprise — FSEGN Nabeul. Innover ensemble pour transformer les projets en
-            réussites.
+            Junior Entreprise de la FSEGN à Nabeul. Des étudiants formés aux méthodes du conseil,
+            au service du marketing local depuis {site.founded}.
           </p>
           <SocialLinks variant="light" />
         </div>
@@ -66,7 +66,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Mentions légales */}
+        {/* Informations */}
         <div>
           <h2 className="eyebrow mb-5">Informations</h2>
           <ul className="flex flex-col gap-3 text-sm">
@@ -100,8 +100,8 @@ export default function Footer() {
 
       <div className="border-t border-white/10">
         <div className="container-nmc flex flex-col items-center justify-between gap-2 py-6 text-xs text-white/50 sm:flex-row">
-          <p>© {year} NMC Junior Entreprise. Tous droits réservés.</p>
-          <p>Neapolis Marketing Consulting — FSEGN, Nabeul, Tunisie</p>
+          <p>© {year} {site.fullName}. Tous droits réservés.</p>
+          <p>Junior Entreprise de la FSEGN — Nabeul, Tunisie</p>
         </div>
       </div>
     </footer>

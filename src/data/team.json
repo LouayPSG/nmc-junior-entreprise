@@ -1,31 +1,36 @@
 {
-  "status": "pending_content",
-  "notice": "Effectif à fournir par NMC : nom, rôle, pôle, photo, LinkedIn. Structure des pôles à confirmer.",
-  "poles": [
+  "board": [
+    { "name": "Yassine Chouk", "role": "Président", "photo": null, "linkedin": null },
+    { "name": "Chahd Abidi", "role": "Secrétaire générale", "roleNote": "Département développement commercial (intérim)", "photo": null, "linkedin": null },
+    { "name": "Souleimen Madhbouh", "role": "Trésorier", "photo": null, "linkedin": null },
+    { "name": "Youssef Jbeli", "role": "Responsable RH & formations", "photo": null, "linkedin": null },
+    { "name": "Ranim Ajlani", "role": "Responsable projets", "photo": null, "linkedin": null },
+    { "name": "Sirine Riahi", "role": "Responsable marketing & événementiel", "photo": null, "linkedin": null }
+  ],
+  "departments": [
     {
-      "id": "bureau",
-      "name": "Bureau exécutif",
-      "members": []
+      "id": "commercial",
+      "name": "Développement commercial",
+      "description": "Premier contact avec les entreprises : écoute du besoin, construction de l'offre et suivi de la relation client.",
+      "lead": "Chahd Abidi"
     },
     {
-      "id": "marketing",
-      "name": "Pôle Marketing",
-      "members": []
+      "id": "projets",
+      "name": "Projets",
+      "description": "Pilotage des missions : équipes, planning, qualité des livrables du brief à la restitution.",
+      "lead": "Ranim Ajlani"
     },
     {
-      "id": "etudes",
-      "name": "Pôle Études & Projets",
-      "members": []
+      "id": "marketing-evenementiel",
+      "name": "Marketing & événementiel",
+      "description": "Image de NMC, contenus, animation des réseaux et organisation des temps forts de l'année.",
+      "lead": "Sirine Riahi"
     },
     {
-      "id": "finance",
-      "name": "Pôle Finance",
-      "members": []
-    },
-    {
-      "id": "rh",
-      "name": "Pôle Ressources Humaines",
-      "members": []
+      "id": "rh-formations",
+      "name": "RH & formations",
+      "description": "Recrutement des nouveaux membres et montée en compétences : formations internes aux méthodes professionnelles.",
+      "lead": "Youssef Jbeli"
     }
   ]
 }

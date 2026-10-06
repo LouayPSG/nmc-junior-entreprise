@@ -1,71 +1,31 @@
 {
-  "status": "pending_confirmation",
-  "notice": "Catalogue de services à confirmer par NMC (Brand Book). Catégories proposées à titre purement structurel — à valider ou remplacer avant publication.",
-  "services": [
+  "expertises": [
     {
-      "id": "etudes",
-      "title": "Études de marché",
+      "id": "research",
+      "title": "Research",
+      "nameFr": "Études & Recherche",
       "icon": "chart",
-      "confirmed": false,
-      "shortDescription": "[À CONFIRMER AVEC NMC] Cadre proposé : étude de marché et analyse sectorielle pour PME et porteurs de projets.",
-      "valueProposition": "[À CONFIRMER AVEC NMC]",
-      "deliverables": [
-        "[À CONFIRMER AVEC NMC]",
-        "[À CONFIRMER AVEC NMC]",
-        "[À CONFIRMER AVEC NMC]"
-      ]
+      "intro": "Comprendre le marché avant d'agir. Nous menons des études structurées qui donnent aux entreprises locales une base factuelle pour décider.",
+      "description": "Collecte et analyse de données terrain : questionnaires, entretiens, observations, études documentaires. L'objectif est de transformer l'information brute en lecture claire d'un marché, d'une clientèle ou d'un territoire.",
+      "what": "Études de marché, profils et comportements clients, exploration d'une zone de chalandise, synthèses documentaires."
     },
     {
-      "id": "digital",
-      "title": "Marketing digital & réseaux sociaux",
-      "icon": "megaphone",
-      "confirmed": false,
-      "shortDescription": "[À CONFIRMER AVEC NMC] Cadre proposé : stratégie social media, création de contenu et gestion de campagnes.",
-      "valueProposition": "[À CONFIRMER AVEC NMC]",
-      "deliverables": [
-        "[À CONFIRMER AVEC NMC]",
-        "[À CONFIRMER AVEC NMC]",
-        "[À CONFIRMER AVEC NMC]"
-      ]
+      "id": "strategy",
+      "title": "Strategy",
+      "nameFr": "Stratégie & Conseil",
+      "icon": "compass",
+      "intro": "Passer de l'analyse à la décision. Nous aidons à définir un cap marketing cohérent avec les moyens réels de l'entreprise.",
+      "description": "À partir du diagnostic, nous formulons des recommandations hiérarchisées : positionnement, cibles prioritaires, axes d'action. Chaque conseil est pensé pour être applicable par une PME ou un porteur de projet, pas pour rester sur le papier.",
+      "what": "Diagnostic marketing, positionnement, recommandations opérationnelles, structuration d'un plan d'action."
     },
     {
       "id": "branding",
-      "title": "Branding & identité visuelle",
+      "title": "Branding",
+      "nameFr": "Branding & Contenu",
       "icon": "pen",
-      "confirmed": false,
-      "shortDescription": "[À CONFIRMER AVEC NMC] Cadre proposé : définition d'identité de marque et supports de communication.",
-      "valueProposition": "[À CONFIRMER AVEC NMC]",
-      "deliverables": [
-        "[À CONFIRMER AVEC NMC]",
-        "[À CONFIRMER AVEC NMC]",
-        "[À CONFIRMER AVEC NMC]"
-      ]
-    },
-    {
-      "id": "conseil",
-      "title": "Conseil marketing & plans d'action",
-      "icon": "compass",
-      "confirmed": false,
-      "shortDescription": "[À CONFIRMER AVEC NMC] Cadre proposé : accompagnement des PME dans l'élaboration de leur plan marketing.",
-      "valueProposition": "[À CONFIRMER AVEC NMC]",
-      "deliverables": [
-        "[À CONFIRMER AVEC NMC]",
-        "[À CONFIRMER AVEC NMC]",
-        "[À CONFIRMER AVEC NMC]"
-      ]
-    },
-    {
-      "id": "evenementiel",
-      "title": "Appui événementiel & communication",
-      "icon": "calendar",
-      "confirmed": false,
-      "shortDescription": "[À CONFIRMER AVEC NMC] Cadre proposé : organisation d'événements et communication opérationnelle.",
-      "valueProposition": "[À CONFIRMER AVEC NMC]",
-      "deliverables": [
-        "[À CONFIRMER AVEC NMC]",
-        "[À CONFIRMER AVEC NMC]",
-        "[À CONFIRMER AVEC NMC]"
-      ]
+      "intro": "Faire exister une marque avec justesse. Nous construisons des identités et des supports de communication qui inspirent confiance.",
+      "description": "Définition de l'identité de marque et conception des supports qui la portent : visuels, messages, contenus pour les réseaux sociaux. Un travail au plus près de l'image que l'entreprise veut renvoyer à ses clients.",
+      "what": "Positionnement de marque, réflexion identité visuelle, supports de communication, contenus pour réseaux sociaux."
     }
   ]
 }

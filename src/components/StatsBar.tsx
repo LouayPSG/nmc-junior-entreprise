@@ -1,37 +1,44 @@
 import Reveal from "./Reveal";
-import { getConfirmedStats, stats } from "@/lib/content";
+import { getConfirmedStats, site } from "@/lib/content";
 
-/**
- * Chiffres clés — n'affiche que des valeurs confirmées par NMC.
- * Tant que rien n'est confirmé : état explicite "à confirmer", aucun chiffre inventé.
- */
+/** Bande de chiffres clés — uniquement des faits confirmés (aucune statistique inventée) */
 export default function StatsBar() {
   const confirmed = getConfirmedStats();
+  if (confirmed.length === 0) return null;
+
   return (
     <section className="border-b border-black/10 bg-white">
-      <div className="container-nmc py-14">
-        <Reveal>
-          <p className="note-pending mb-8 text-center">
-            {confirmed.length > 0
-              ? "Chiffres clés — confirmés par NMC"
-              : "Chiffres clés — en attente de confirmation par NMC"}
-          </p>
-        </Reveal>
-        <div className="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8">
-          {stats.stats.map((s, i) => {
-            const isConfirmed = s.confirmed && typeof s.value === "number";
-            return (
-              <Reveal key={s.id} delay={i * 80}>
-                <div className="flex flex-col items-center gap-1 border-t-2 pt-6 text-center" style={{ borderColor: "var(--color-red)" }}>
-                  <span className="stat-number text-black">
-                    {isConfirmed ? s.value : s.valuePlaceholder}
-                  </span>
-                  <span className="text-sm font-medium text-black/60">{s.label}</span>
-                </div>
-              </Reveal>
-            );
-          })}
+      <div className="container-nmc py-12">
+        <div className="grid gap-8 sm:grid-cols-3">
+          {confirmed.map((s, i) => (
+            <Reveal key={s.id} delay={i * 80}>
+              <div
+                className="flex flex-col items-center gap-1 border-t-2 pt-6 text-center"
+                style={{ borderColor: "var(--color-red)" }}
+              >
+                <span className="stat-number text-black">{s.value}</span>
+                <span className="text-sm font-medium text-black/60">{s.label}</span>
+              </div>
+            </Reveal>
+          ))}
+          <Reveal delay={confirmed.length * 80}>
+            <div className="flex flex-col items-center gap-1 border-t-2 border-black/15 pt-6 text-center">
+              <span className="stat-number text-black">FSEGN</span>
+              <span className="text-sm font-medium text-black/60">Notre ancrage à Nabeul</span>
+            </div>
+          </Reveal>
+          <Reveal delay={confirmed.length * 80 + 80}>
+            <div className="flex flex-col items-center gap-1 border-t-2 border-black/15 pt-6 text-center">
+              <span className="stat-number text-black">3</span>
+              <span className="text-sm font-medium text-black/60">
+                Domaines : research · strategy · branding
+              </span>
+            </div>
+          </Reveal>
         </div>
+        <p className="sr-only">
+          NMC Junior Entreprise, fondée en {site.founded}, Junior Entreprise de la FSEGN.
+        </p>
       </div>
     </section>
   );

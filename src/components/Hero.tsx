@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Reveal from "./Reveal";
 import Icon from "./Icon";
+import { site } from "@/lib/content";
 
 /**
  * Hero typographique — noir profond, accent rouge unique (motif géométrique),
@@ -14,7 +15,7 @@ export default function Hero() {
         <Reveal>
           <p className="inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-white/70">
             <span className="inline-block h-2 w-2" style={{ background: "var(--color-red)" }} />
-            Junior Entreprise — FSEGN Nabeul
+            Junior Entreprise — FSEGN Nabeul · Depuis {site.founded}
           </p>
         </Reveal>
 
@@ -28,20 +29,20 @@ export default function Hero() {
 
         <Reveal delay={200}>
           <p className="max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">
-            NMC Junior Entreprise accompagne les entreprises et porteurs de projets de la région de
-            Nabeul dans leurs démarches marketing, avec l'exigence d'une équipe étudiante formée aux
-            méthodes professionnelles.
+            NMC — Neapolis Marketing Consulting — réunit des étudiants de la FSEGN formés aux
+            méthodes du conseil pour accompagner les entreprises et porteurs de projets de la
+            région : études, stratégie, branding.
           </p>
         </Reveal>
 
         <Reveal delay={300}>
           <div className="flex flex-col gap-4 sm:flex-row">
             <Link href="/contact" className="btn btn-primary">
-              Travaillons ensemble
+              Parler de mon projet
               <Icon name="arrow-right" size={18} />
             </Link>
-            <Link href="/projets" className="btn btn-secondary-dark">
-              Découvrir nos projets
+            <Link href="/services" className="btn btn-secondary-dark">
+              Découvrir nos prestations
             </Link>
           </div>
         </Reveal>

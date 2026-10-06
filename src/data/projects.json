@@ -1,6 +1,4 @@
 {
-  "status": "pending_content",
-  "notice": "Projets à fournir par NMC : nom, client (si autorisé), catégorie, description, résultat, année, visuel.",
-  "featuredCount": 3,
-  "projects": []
+  "projects": [],
+  "featuredCount": 3
 }

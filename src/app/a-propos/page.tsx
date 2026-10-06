@@ -5,13 +5,12 @@ import SectionHeader from "@/components/SectionHeader";
 import Reveal from "@/components/Reveal";
 import Icon, { type IconName } from "@/components/Icon";
 import CtaBanner from "@/components/CtaBanner";
-import TeamCard from "@/components/TeamCard";
-import { team } from "@/lib/content";
+import { site, social } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "À propos",
+  title: "À propos de NMC Junior Entreprise",
   description:
-    "NMC Junior Entreprise, la Junior Entreprise de la FSEGN (Nabeul) : mission, vision, valeurs et identité Junior Entreprise. Innover ensemble pour transformer les projets en réussites.",
+    "NMC Junior Entreprise, la Junior Entreprise de la FSEGN (Nabeul) : mission, vision, valeurs et modèle Junior Entreprise. Innover ensemble pour transformer les projets en réussites.",
   alternates: { canonical: "/a-propos" },
   openGraph: {
     title: "À propos — NMC Junior Entreprise",
@@ -43,15 +42,13 @@ const VALUES: { icon: IconName; name: string; text: string }[] = [
   },
 ];
 
-const membersSample = team.poles.flatMap((p) => p.members).slice(0, 4);
-
 export default function AboutPage() {
   return (
     <>
       <PageHero
         eyebrow="À propos"
         title="Une Junior Entreprise à l'exigence professionnelle"
-        intro="NMC — Neapolis Marketing Consulting Junior Entreprise — est basée à la Faculté des Sciences Économiques et de Gestion de Nabeul."
+        intro={`NMC — Neapolis Marketing Consulting Junior Entreprise — est basée à la Faculté des Sciences Économiques et de Gestion de Nabeul, et agit sur le marché du marketing étudiant depuis ${site.founded}.`}
       />
 
       {/* Mission / Vision */}
@@ -78,7 +75,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Qu'est-ce qu'une Junior Entreprise ? */}
+      {/* Le modèle Junior Entreprise */}
       <section className="bg-gray-100">
         <div className="container-nmc grid gap-10 py-20 md:py-24 lg:grid-cols-12">
           <div className="lg:col-span-7">
@@ -108,7 +105,7 @@ export default function AboutPage() {
           <div className="lg:col-span-5">
             <Reveal delay={200}>
               <blockquote className="card flex h-full flex-col justify-center gap-4 border-l-4 p-8" style={{ borderLeftColor: "var(--color-red)" }}>
-                <p className="h3-display text-black">« Innover ensemble pour transformer les projets en réussites. »</p>
+                <p className="h3-display text-black">« {site.baseline} »</p>
                 <footer className="text-sm font-semibold uppercase tracking-widest text-black/50">
                   Message de marque NMC
                 </footer>
@@ -118,8 +115,51 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Valeurs */}
+      {/* NMC × étudiants × entreprises × FSEGN */}
       <section className="bg-white">
+        <div className="container-nmc py-20 md:py-24">
+          <SectionHeader
+            align="center"
+            eyebrow="Notre écosystème"
+            title="Trois publics, une même dynamique"
+          />
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {[
+              {
+                icon: "users" as IconName,
+                title: "Étudiants",
+                text: "Des membres de la FSEGN qui apprennent le marketing en conditions réelles et construisent leur employabilité.",
+              },
+              {
+                icon: "briefcase" as IconName,
+                title: "Entreprises & porteurs de projets",
+                text: "Des PME, commerces et entrepreneurs du Cap Bon qui accèdent à des prestations structurées à coût maîtrisé.",
+              },
+              {
+                icon: "graduation" as IconName,
+                title: "FSEGN",
+                text: "La faculté qui héberge NMC et relie la formation académique au monde professionnel.",
+              },
+            ].map((item, i) => (
+              <Reveal key={item.title} delay={i * 80} className="h-full">
+                <article className="card card-hover flex h-full flex-col gap-4 p-8 text-center">
+                  <span
+                    className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-md"
+                    style={{ background: "rgba(162,35,35,0.08)", color: "var(--color-red)" }}
+                  >
+                    <Icon name={item.icon} size={24} />
+                  </span>
+                  <h3 className="h3-display text-black">{item.title}</h3>
+                  <p className="text-sm leading-relaxed text-black/70">{item.text}</p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Valeurs */}
+      <section className="bg-gray-100">
         <div className="container-nmc py-20 md:py-24">
           <SectionHeader
             align="center"
@@ -145,34 +185,13 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Teaser équipe (données réelles uniquement) */}
-      {membersSample.length > 0 ? (
-        <section className="bg-gray-100">
-          <div className="container-nmc py-20 md:py-24">
-            <SectionHeader eyebrow="L'équipe" title="Des étudiants engagés derrière chaque mission" />
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {membersSample.map((m, i) => (
-                <TeamCard key={m.name} member={m} index={i} />
-              ))}
-            </div>
-            <Reveal delay={200}>
-              <div className="mt-10">
-                <Link href="/equipe" className="btn btn-secondary">
-                  Toute l'équipe
-                </Link>
-              </div>
-            </Reveal>
-          </div>
-        </section>
-      ) : null}
-
       {/* Rejoindre NMC (ancre ciblée par le CTA global) */}
       <section id="rejoindre" className="bg-white">
         <div className="container-nmc grid gap-10 py-20 md:py-24 lg:grid-cols-2 lg:items-center">
           <SectionHeader
             eyebrow="Rejoindre NMC"
             title="Vous êtes étudiant à la FSEGN ?"
-            subtitle="Rejoindre NMC, c'est vivre l'entrepreneuriat et le conseil marketing de l'intérieur : missions client, événements, réseau. Les modalités de recrutement de chaque mandat sont communiquées par NMC sur ses réseaux officiels."
+            subtitle="Rejoindre NMC, c'est vivre l'entrepreneuriat et le conseil marketing de l'intérieur : missions client, événements, réseau. Les périodes de recrutement de chaque mandat sont annoncées sur nos réseaux officiels."
           />
           <Reveal delay={150}>
             <div className="flex flex-col items-start gap-4">
@@ -180,16 +199,13 @@ export default function AboutPage() {
                 Nous contacter
               </Link>
               <a
-                href="https://www.instagram.com/nmc_junior_entreprise"
+                href={social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="link-underline text-sm"
               >
                 Suivre les annonces de recrutement sur Instagram
               </a>
-              <p className="text-sm text-black/50">
-                (Périodes de recrutement : à confirmer par NMC à chaque mandat.)
-              </p>
             </div>
           </Reveal>
         </div>

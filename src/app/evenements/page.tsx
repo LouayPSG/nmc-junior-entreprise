@@ -1,20 +1,40 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
-import EventCard from "@/components/EventCard";
+import SectionHeader from "@/components/SectionHeader";
 import Reveal from "@/components/Reveal";
+import Icon, { type IconName } from "@/components/Icon";
 import CtaBanner from "@/components/CtaBanner";
-import { getSortedEvents, events } from "@/lib/content";
+import { getSortedEvents, social } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Événements",
+  title: "Événements & actualités — NMC Junior Entreprise",
   description:
-    "Ateliers, séminaires, partenariats : la vie de NMC Junior Entreprise, la JE de la FSEGN Nabeul. Programme en cours de finalisation.",
+    "Formations internes, ateliers, séminaires et partenariats : suivez la vie de NMC Junior Entreprise, la JE de la FSEGN Nabeul, sur cette page et sur nos réseaux.",
   alternates: { canonical: "/evenements" },
   openGraph: {
-    title: "Événements — NMC Junior Entreprise",
-    description: "Ateliers, séminaires et événements de NMC Junior Entreprise à la FSEGN Nabeul.",
+    title: "Événements & actualités — NMC Junior Entreprise",
+    description:
+      "Suivez les temps forts de NMC Junior Entreprise : formations, ateliers, séminaires et partenariats.",
   },
 };
+
+const ACTIVITIES: { icon: IconName; title: string; text: string }[] = [
+  {
+    icon: "graduation",
+    title: "Formations internes",
+    text: "Le département RH & formations organise des sessions régulières : méthodologie d'étude, outils du conseil, prise de parole.",
+  },
+  {
+    icon: "spark",
+    title: "Ateliers & séminaires",
+    text: "Des temps d'apprentissage collectif, parfois avec des intervenants professionnels, ouverts selon les éditions.",
+  },
+  {
+    icon: "handshake",
+    title: "Rencontres & partenariats",
+    text: "Événements co-construits avec des entreprises, des institutions ou d'autres associations du campus.",
+  },
+];
 
 export default function EventsPage() {
   const list = getSortedEvents();
@@ -22,8 +42,8 @@ export default function EventsPage() {
     <>
       <PageHero
         eyebrow="Événements"
-        title="La vie de NMC, atelier après atelier"
-        intro="Formations internes, séminaires, rencontres avec des professionnels : cette page recense les temps forts de NMC. Elle est mise à jour à la main, au rythme des activités."
+        title="La vie de NMC, au rythme des activités"
+        intro="Formations, ateliers, séminaires, rencontres professionnelles : les temps forts rythment l'année et font grandir les membres. Les annonces officielles passent d'abord par Instagram."
       />
 
       <section className="bg-white">
@@ -31,37 +51,68 @@ export default function EventsPage() {
           {list.length > 0 ? (
             <div className="flex flex-col gap-4">
               {list.map((e, i) => (
-                <EventCard key={e.slug} event={e} index={i} />
+                <Reveal key={e.slug} delay={i * 60}>
+                  <article className="card card-hover flex flex-col gap-4 p-6 sm:flex-row sm:items-center sm:gap-6">
+                    <div className="flex shrink-0 flex-col items-center">
+                      <span className="font-display text-4xl leading-none text-black">
+                        {e.date.slice(8, 10)}
+                      </span>
+                      <span className="text-xs font-semibold uppercase tracking-widest text-[color:var(--color-red)]">
+                        {e.date.slice(5, 7)}/{e.date.slice(0, 4)}
+                      </span>
+                    </div>
+                    <span className="hidden h-12 w-px bg-black/10 sm:block" aria-hidden="true" />
+                    <div className="flex flex-1 flex-col gap-1">
+                      <div className="flex flex-wrap items-center gap-3">
+                        <h3 className="h3-display text-black">{e.title}</h3>
+                        {e.tag ? <span className="tag tag-red">{e.tag}</span> : null}
+                      </div>
+                      <p className="text-sm leading-relaxed text-black/70">{e.description}</p>
+                    </div>
+                  </article>
+                </Reveal>
               ))}
             </div>
           ) : (
-            <div className="flex flex-col items-center gap-6 py-10 text-center">
-              <Reveal>
-                <p className="eyebrow">Programme en cours de finalisation</p>
-              </Reveal>
-              <Reveal delay={80}>
-                <h2 className="h2-display max-w-3xl text-black">
-                  Le programme des événements arrive
-                </h2>
-              </Reveal>
-              <Reveal delay={140}>
-                <p className="max-w-2xl text-black/70">
-                  Ateliers, séminaires et partenariats seront annoncés ici dès validation du
-                  calendrier par NMC.
-                </p>
-              </Reveal>
-              <Reveal delay={200}>
-                <div className="placeholder-box mt-4 w-full max-w-2xl">
-                  <span>
-                    <span style={{ color: "var(--color-red)" }}>Contenu à venir</span>
-                    <br />
-                    Événements à fournir par NMC (date, titre, description, type)
-                  </span>
-                </div>
-              </Reveal>
-              <Reveal delay={240}>
-                <p className="text-sm text-black/50">{events.notice}</p>
-              </Reveal>
+            <div className="grid gap-12 lg:grid-cols-12 lg:items-start">
+              <div className="lg:col-span-6">
+                <SectionHeader
+                  eyebrow="Notre calendrier"
+                  title="Trois types d'activités rythment l'année"
+                  subtitle="Les dates et les programmes officiels sont annoncés au fur et à mesure sur notre Instagram — c'est notre canal de référence pour l'actualité."
+                />
+                <Reveal delay={150}>
+                  <a
+                    href={social.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary mt-8"
+                  >
+                    <Icon name="instagram" size={18} />
+                    Voir l'actualité sur Instagram
+                  </a>
+                </Reveal>
+              </div>
+              <div className="lg:col-span-6">
+                <Reveal delay={200}>
+                  <div className="flex flex-col gap-4">
+                    {ACTIVITIES.map((a) => (
+                      <article key={a.title} className="card flex gap-4 p-6">
+                        <span
+                          className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-md"
+                          style={{ background: "rgba(162,35,35,0.08)", color: "var(--color-red)" }}
+                        >
+                          <Icon name={a.icon} size={22} />
+                        </span>
+                        <div>
+                          <h3 className="text-base font-semibold text-black">{a.title}</h3>
+                          <p className="mt-1 text-sm leading-relaxed text-black/70">{a.text}</p>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                </Reveal>
+              </div>
             </div>
           )}
         </div>

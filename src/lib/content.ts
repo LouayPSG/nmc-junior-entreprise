@@ -7,6 +7,7 @@ import partnersData from "@/data/partners.json";
 import statsData from "@/data/stats.json";
 import {
   ContactInfo,
+  EventItem,
   EventsJson,
   NavItem,
   PartnersJson,
@@ -35,18 +36,18 @@ export const social: SocialLinks = site.social;
 
 /* Helpers métier ---------------------------------------------------------- */
 
-/** Services affichés (tous en l'état : non confirmés => rendu placeholder visible) */
-export function getAllServices() {
-  return services.services;
+/** Expertises affichées (domaines confirmés : Research • Strategy • Branding) */
+export function getExpertises() {
+  return services.expertises;
 }
 
-/** Projets mis en avant sur la page d'accueil (2 à 3 selon featuredCount) */
-export function getFeaturedProjects(): ProjectItem[] {
+/** Projets mis en avant sur la page d'accueil */
+export function getFeaturedProjects(): Project[] {
   return projects.projects.filter((p) => p.featured).slice(0, projects.featuredCount);
 }
 
-/** Projets triés : à la une d'abord, puis par année décroissante */
-export function getAllProjects(): ProjectItem[] {
+/** Tous les projets, triés : à la une d'abord, puis par année décroissante */
+export function getAllProjects(): Project[] {
   return [...projects.projects].sort((a, b) => {
     if (a.featured !== b.featured) return a.featured ? -1 : 1;
     return (b.year || "").localeCompare(a.year || "");
@@ -54,18 +55,17 @@ export function getAllProjects(): ProjectItem[] {
 }
 
 /** Événements triés du plus récent au plus ancien */
-export function getSortedEvents(): EventItemSorted[] {
+export function getSortedEvents(): EventItem[] {
   return [...events.events].sort((a, b) => b.date.localeCompare(a.date));
 }
 
-/** Chiffres clés confirmés uniquement (aucun chiffre fictif affiché) */
+/** Chiffres clés confirmés uniquement (aucun chiffre inventé) */
 export function getConfirmedStats() {
-  return stats.stats.filter((s) => s.confirmed && typeof s.value === "number");
+  return stats.stats.filter((s) => s.confirmed);
 }
 
 export function hasConfirmedStats() {
   return getConfirmedStats().length > 0;
 }
 
-type ProjectItem = ProjectsJson["projects"][number];
-type EventItemSorted = EventsJson["events"][number];
+type Project = ProjectsJson["projects"][number];

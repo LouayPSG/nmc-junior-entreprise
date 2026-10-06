@@ -36,7 +36,8 @@ export default function PrivacyPage() {
             </p>
             <p>
               Aucun cookie publicitaire n'est déposé par ce site. Aucune donnée n'est vendue ni
-              cédée à des tiers.
+              cédée à des tiers. La carte Google Maps intégrée à la page Contact est fournie par
+              Google et peut déposer ses propres cookies lorsqu'elle est affichée.
             </p>
           </LegalSection>
 
@@ -71,12 +72,6 @@ export default function PrivacyPage() {
             <p>
               L'envoi du formulaire requiert le consentement explicite via la case à cocher dédiée.
               Vous pouvez retirer votre consentement à tout moment par e-mail.
-            </p>
-            <p>
-              <em>
-                [À compléter par NMC : toute exigence institutionnelle propre à la FSEGN — à
-                confirmer avec NMC / FSEGN.]
-              </em>
             </p>
           </LegalSection>
         </div>

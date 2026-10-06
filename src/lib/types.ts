@@ -22,6 +22,7 @@ export interface SiteJson {
   fullName: string;
   baseline: string;
   shortDescription: string;
+  founded: number;
   contact: ContactInfo;
   social: SocialLinks;
   nav: NavItem[];
@@ -29,20 +30,20 @@ export interface SiteJson {
   legal: { mentions: string; privacy: string };
 }
 
-export interface Service {
+/* Expertises — les 3 domaines confirmés par la bio officielle NMC :
+   Research • Strategy • Branding */
+export interface Expertise {
   id: string;
   title: string;
+  nameFr: string;
   icon: string;
-  confirmed: boolean;
-  shortDescription: string;
-  valueProposition: string;
-  deliverables: string[];
+  intro: string;
+  description: string;
+  what: string;
 }
 
 export interface ServicesJson {
-  status: string;
-  notice: string;
-  services: Service[];
+  expertises: Expertise[];
 }
 
 export interface Project {
@@ -59,8 +60,6 @@ export interface Project {
 }
 
 export interface ProjectsJson {
-  status: string;
-  notice: string;
   featuredCount: number;
   projects: Project[];
 }
@@ -75,28 +74,28 @@ export interface EventItem {
 }
 
 export interface EventsJson {
-  status: string;
-  notice: string;
   events: EventItem[];
 }
 
-export interface TeamMember {
+/* Équipe — bureau exécutif confirmé + départements */
+export interface BoardMember {
   name: string;
   role: string;
+  roleNote?: string;
   photo: string | null;
   linkedin: string | null;
 }
 
-export interface TeamPole {
+export interface Department {
   id: string;
   name: string;
-  members: TeamMember[];
+  description: string;
+  lead: string;
 }
 
 export interface TeamJson {
-  status: string;
-  notice: string;
-  poles: TeamPole[];
+  board: BoardMember[];
+  departments: Department[];
 }
 
 export interface Partner {
@@ -112,21 +111,16 @@ export interface PartnerCategory {
 }
 
 export interface PartnersJson {
-  status: string;
-  notice: string;
   categories: PartnerCategory[];
 }
 
 export interface Stat {
   id: string;
-  value: number | null;
-  valuePlaceholder: string;
+  value: number;
   label: string;
   confirmed: boolean;
 }
 
 export interface StatsJson {
-  status: string;
-  notice: string;
   stats: Stat[];
 }

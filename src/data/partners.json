@@ -1,26 +1,11 @@
 {
-  "status": "pending_content",
-  "notice": "Partenaires à fournir par NMC avec logos et autorisation écrite d'affichage.",
   "categories": [
     {
       "id": "academique",
-      "name": "Partenaires académiques",
-      "partners": []
-    },
-    {
-      "id": "entreprise",
-      "name": "Partenaires entreprises",
-      "partners": []
-    },
-    {
-      "id": "institutionnel",
-      "name": "Partenaires institutionnels",
-      "partners": []
-    },
-    {
-      "id": "reseau-je",
-      "name": "Réseau Junior Entreprise",
-      "partners": []
+      "name": "Écosystème académique",
+      "partners": [
+        { "name": "FSEGN — Faculté des Sciences Économiques et de Gestion de Nabeul", "logo": null, "url": null }
+      ]
     }
   ]
 }

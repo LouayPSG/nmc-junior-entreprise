@@ -26,9 +26,9 @@ export default function MentionsLegalesPage() {
         <div className="container-nmc max-w-3xl py-16 md:py-20">
           <LegalSection title="Éditeur du site">
             <p>
-              Le présent site est édité par <strong>{site.fullName}</strong> (NMC Junior
-              Entreprise), Junior Entreprise de la Faculté des Sciences Économiques et de Gestion de
-              Nabeul.
+              Le présent site est édité par <strong>{site.fullName}</strong> ({site.name}),
+              Junior Entreprise de la Faculté des Sciences Économiques et de Gestion de Nabeul
+              (FSEGN).
             </p>
             <p>
               Adresse : {contact.address}
@@ -39,25 +39,23 @@ export default function MentionsLegalesPage() {
             </p>
             <p>
               <em>
-                [À compléter par NMC : numéro d'enregistrement / statut associatif, nom du
-                responsable de publication — à confirmer avec NMC / FSEGN.]
+                Responsable de publication : le bureau exécutif de {site.name}. Pour toute question
+                relative au site, contactez-nous à {contact.email}.
               </em>
             </p>
           </LegalSection>
 
           <LegalSection title="Hébergement">
             <p>
-              Le site est hébergé sur une plateforme cloud (Vercel Inc. ou équivalent), avec
-              certificat SSL. Les coordonnées complètes de l'hébergeur seront précisées lors de la
-              mise en production définitive.
+              Le site est hébergé par Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723,
+              États-Unis (vercel.com), avec certificat SSL.
             </p>
           </LegalSection>
 
           <LegalSection title="Propriété intellectuelle">
             <p>
               L'ensemble des contenus (textes, visuels, logos) est la propriété de {site.name}, sauf
-              mention contraire. Toute reproduction sans autorisation écrite est interdite. Les
-              logos des partenaires sont utilisés avec leur accord.
+              mention contraire. Toute reproduction sans autorisation écrite est interdite.
             </p>
           </LegalSection>
 

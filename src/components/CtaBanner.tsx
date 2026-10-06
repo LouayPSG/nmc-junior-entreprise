@@ -27,10 +27,10 @@ export default function CtaBanner({
         <Reveal delay={160}>
           <div className="flex flex-col gap-4 sm:flex-row">
             <Link href="/contact" className="btn btn-primary">
-              Travaillons ensemble
+              Parler de mon projet
             </Link>
-            <Link href="/a-propos#rejoindre" className="btn btn-secondary-dark">
-              Rejoindre NMC
+            <Link href="/a-propos" className="btn btn-secondary-dark">
+              Découvrir NMC
             </Link>
           </div>
         </Reveal>

@@ -7,9 +7,9 @@ import Reveal from "@/components/Reveal";
 import { contact, social } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Contact — NMC Junior Entreprise",
   description:
-    "Contactez NMC Junior Entreprise (FSEGN Nabeul) : formulaire, e-mail, téléphone. Réponse sous 48 à 72 heures. Innover ensemble pour transformer les projets en réussites.",
+    "Contactez NMC Junior Entreprise (FSEGN Nabeul) : formulaire, e-mail, téléphone, Instagram. Parlons de votre projet marketing.",
   alternates: { canonical: "/contact" },
   openGraph: {
     title: "Contact — NMC Junior Entreprise",
@@ -35,8 +35,8 @@ export default function ContactPage() {
             </Reveal>
             <Reveal delay={80}>
               <p className="mt-3 text-black/70">
-                Réponse sous 48 à 72 heures ouvrées. Les champs marqués d'un astérisque (*) sont
-                obligatoires.
+                Décrivez votre besoin : nous revenons vers vous pour en discuter. Les champs
+                marqués d'un astérisque (*) sont obligatoires.
               </p>
             </Reveal>
             <Reveal delay={140} className="mt-8">
@@ -88,12 +88,15 @@ export default function ContactPage() {
                     Suivre NMC
                   </h3>
                   <SocialLinks />
+                  <a
+                    href={social.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-underline mt-4 inline-block text-sm"
+                  >
+                    Actualité et événements sur Instagram
+                  </a>
                 </div>
-
-                <p className="text-xs leading-relaxed text-black/50">
-                  WhatsApp : en attente de confirmation d'un numéro WhatsApp Business par NMC. Le
-                  canal sera ajouté ici dès validation.
-                </p>
               </div>
             </Reveal>
           </aside>

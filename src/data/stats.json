@@ -1,10 +1,5 @@
 {
-  "status": "pending_confirmation",
-  "notice": "Chiffres clés à confirmer par NMC (projets livrés, membres actifs, entreprises partenaires, année de création).",
   "stats": [
-    { "id": "projets", "value": null, "valuePlaceholder": "XX", "label": "Projets menés", "confirmed": false },
-    { "id": "membres", "value": null, "valuePlaceholder": "XX", "label": "Membres actifs", "confirmed": false },
-    { "id": "partenaires", "value": null, "valuePlaceholder": "X", "label": "Entreprises partenaires", "confirmed": false },
-    { "id": "annees", "value": null, "valuePlaceholder": "XX", "label": "Années d'activité", "confirmed": false }
+    { "id": "annees", "value": 8, "label": "Années d'expérience", "confirmed": true }
   ]
 }

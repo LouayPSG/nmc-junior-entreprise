@@ -31,12 +31,12 @@ public/assets/fonts/ # polices (OFL)
 | Fichier | Contenu | Note |
 |---|---|---|
 | `src/data/site.json` | Coordonnées, navigation, réseaux | Infos officielles Brand Book |
-| `src/data/services.json` | Catalogue de services | **À confirmer par NMC** (`confirmed: true` quand validé) |
+| `src/data/services.json` | Expertises (Research • Strategy • Branding) | Présentation prudente par domaines, validée |
 | `src/data/projects.json` | Projets / portfolio | Ajouter une entrée par projet (`featured: true` pour la une) |
 | `src/data/events.json` | Événements | Ajouter `{ slug, date, title, description, tag }` |
 | `src/data/team.json` | Équipe par pôle | Ajouter `{ name, role, photo, linkedin }` |
 | `src/data/partners.json` | Partenaires | Logo + **autorisation écrite requise** avant affichage |
-| `src/data/stats.json` | Chiffres clés | `confirmed: true` + `value` uniquement après validation |
+| `src/data/stats.json` | Chiffres clés | Faits confirmés uniquement (fondation 2018, FSEGN, 3 expertises) |
 
 Après chaque modification : `npm run build` puis déploiement (Vercel/Netlify ou hébergeur statique).
 Les images vont dans `public/assets/{logo,team,projects,events,partners}/`.
@@ -60,12 +60,15 @@ Sans cette variable, le formulaire affiche une erreur explicite (aucune perte si
 
 - `sitemap.xml` et `robots.txt` générés au build (base : `site.social.website` = nmcje.com)
 - Metadata + Open Graph par page, JSON-LD `Organization` (cohérence NAP)
-- À faire côté NMC : Google Business Profile [à confirmer], propriété du domaine nmcje.com
+- À faire côté NMC : Google Business Profile, propriété du domaine nmcje.com
 
-## Statut des contenus (checklist NMC — PRD §KK)
+## Statut des contenus
 
-Les sections suivantes affichent des états **« Contenu à venir »** clairement identifiés, sans aucune donnée inventée :
-services (catalogue exact), projets, événements, équipe (membres + photos), partenaires (logos + permissions), chiffres clés, logo officiel (un logotype texte provisoire est utilisé — remplacer par le pack SVG dès réception), photos hero/à-propos, WhatsApp Business.
+Le site public ne contient plus aucun état « Contenu à venir » ni placeholder. Ne sont publiés que des faits confirmés :
+bureau exécutif réel (6 membres), 3 expertises (Research • Strategy • Branding, conformes à la bio Instagram officielle), fondation 2018, FSEGN.
+
+Reste à fournir par NMC : photos du bureau, URLs LinkedIn des membres, endpoint Formspree (formulaire fonctionnel mais erreur explicite tant que la variable n'est pas définie),
+logo officiel (logotype texte actuel), projets/événements publiable, domaine nmcje.com.
 
 ## Déploiement
 

@@ -16,6 +16,8 @@ type IconName =
   | "arrow-right"
   | "check"
   | "users"
+  | "graduation"
+  | "briefcase"
   | "spark"
   | "target"
   | "handshake"
@@ -112,6 +114,20 @@ const paths: Record<IconName, React.ReactNode> = {
       <circle cx="9" cy="7" r="4" />
       <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
       <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </>
+  ),
+  graduation: (
+    <>
+      <path d="M22 10 12 5 2 10l10 5 10-5Z" />
+      <path d="M6 12.5V17c0 1.66 2.69 3 6 3s6-1.34 6-3v-4.5" />
+      <path d="M22 10v6" />
+    </>
+  ),
+  briefcase: (
+    <>
+      <rect x="2" y="7" width="20" height="14" rx="2" />
+      <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+      <path d="M2 13h20" />
     </>
   ),
   spark: (

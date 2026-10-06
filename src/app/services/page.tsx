@@ -2,106 +2,141 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import SectionHeader from "@/components/SectionHeader";
-import ServiceCard from "@/components/ServiceCard";
 import Reveal from "@/components/Reveal";
-import Icon from "@/components/Icon";
-import { PendingTag } from "@/components/Pending";
-import { getAllServices, contact } from "@/lib/content";
+import Icon, { type IconName } from "@/components/Icon";
+import CtaBanner from "@/components/CtaBanner";
+import { getExpertises, contact, social } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Services",
+  title: "Prestations marketing — NMC Junior Entreprise",
   description:
-    "Services marketing de NMC Junior Entreprise (FSEGN Nabeul) : études de marché, marketing digital, branding, conseil. Catalogue en cours de validation par NMC.",
+    "Les domaines d'intervention de NMC Junior Entreprise (FSEGN Nabeul) : études et recherche marketing, stratégie et conseil, branding et contenu. Des missions menées par une équipe étudiante formée aux méthodes professionnelles.",
   alternates: { canonical: "/services" },
   openGraph: {
-    title: "Services — NMC Junior Entreprise",
-    description: "Études, marketing digital, branding, conseil : découvrez nos prestations marketing encadrées.",
+    title: "Prestations marketing — NMC Junior Entreprise",
+    description:
+      "Études, stratégie, branding : découvrez les domaines d'intervention de NMC Junior Entreprise.",
   },
 };
 
 const STEPS = [
   {
     step: "01",
-    title: "Prise de brief",
-    text: "Nous cadrons votre besoin, vos objectifs et vos contraintes lors d'un premier échange.",
+    title: "Comprendre",
+    text: "Un premier échange pour cerner votre besoin, vos objectifs et vos contraintes réelles.",
   },
   {
     step: "02",
-    title: "Proposition & devis",
-    text: "Vous recevez une proposition détaillée : périmètre, planning, livrables et tarif étudiant réglementé.",
+    title: "Concevoir",
+    text: "Vous recevez une proposition claire : périmètre, méthodologie, planning et livrables attendus.",
   },
   {
     step: "03",
-    title: "Réalisation",
+    title: "Réaliser",
     text: "Une équipe projet dédiée mène la mission, avec des points d'étape réguliers.",
   },
   {
     step: "04",
-    title: "Livrable & suivi",
-    text: "Restitution finale, recommandations actionnables et accompagnement de la mise en pratique.",
+    title: "Accompagner",
+    text: "Restitution finale, recommandations actionnables et suivi de la mise en pratique.",
   },
 ];
 
 export default function ServicesPage() {
-  const list = getAllServices();
+  const expertises = getExpertises();
   return (
     <>
       <PageHero
-        eyebrow="Services"
-        title="Des prestations marketing encadrées, à coût maîtrisé"
-        intro="Chaque mission est menée par une équipe étudiante encadrée, avec la qualité de livraison d'un cabinet. Le catalogue ci-dessous est en attente de confirmation officielle par NMC."
+        eyebrow="Prestations"
+        title="Trois domaines d'intervention, une seule exigence"
+        intro="NMC intervient sur trois fondations du marketing : comprendre un marché (research), décider d'un cap (strategy), faire exister une marque (branding). Chaque mission est menée par une équipe étudiante formée aux méthodes du conseil."
       />
 
-      {/* Avertissement catalogue */}
-      <section className="bg-white border-b border-black/10">
-        <div className="container-nmc py-8">
-          <Reveal>
-            <p className="flex items-start gap-3 text-sm text-black/70">
-              <Icon name="compass" size={20} className="mt-0.5 shrink-0 text-[color:var(--color-red)]" />
-              <span>
-                <strong>Statut du catalogue :</strong> les catégories affichées structurent la page
-                mais restent <PendingTag>à confirmer avec NMC avant publication officielle</PendingTag>. Le
-                périmètre exact, les livrables et les conditions seront précisés à la validation.
-              </span>
-            </p>
-          </Reveal>
+      {/* Domaines détaillés */}
+      <section className="bg-white">
+        <div className="container-nmc flex flex-col py-20 md:py-24">
+          {expertises.map((e, i) => (
+            <Reveal key={e.id}>
+              <article
+                className={`grid gap-8 border-b border-black/10 py-14 last:border-b-0 lg:grid-cols-12 ${
+                  i > 0 ? "" : "pt-0"
+                }`}
+              >
+                <div className="lg:col-span-4">
+                  <div className="flex items-center gap-4">
+                    <span
+                      className="inline-flex h-14 w-14 items-center justify-center rounded-md"
+                      style={{ background: "rgba(162, 35, 35, 0.08)", color: "var(--color-red)" }}
+                    >
+                      <Icon name={e.icon as IconName} size={28} />
+                    </span>
+                    <span className="font-display text-4xl uppercase tracking-wide text-black/12">
+                      {e.title}
+                    </span>
+                  </div>
+                  <h2 className="h2-display mt-5 text-black">{e.nameFr}</h2>
+                </div>
+                <div className="flex flex-col gap-5 lg:col-span-8">
+                  <p className="text-lg leading-relaxed text-black/85">{e.intro}</p>
+                  <p className="leading-relaxed text-black/70">{e.description}</p>
+                  <div className="card border-l-4 p-6" style={{ borderLeftColor: "var(--color-red)" }}>
+                    <p className="text-xs font-semibold uppercase tracking-widest text-black/50">
+                      Concrètement
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-black/80">{e.what}</p>
+                  </div>
+                  <div>
+                    <Link href="/contact" className="btn btn-primary self-start">
+                      Demander cette expertise
+                    </Link>
+                  </div>
+                </div>
+              </article>
+            </Reveal>
+          ))}
         </div>
       </section>
 
-      {/* Catalogue */}
-      <section className="bg-white">
+      {/* Ce que chaque mission inclut — cadre, pas catalogue de livrables */}
+      <section className="bg-gray-100">
         <div className="container-nmc py-20 md:py-24">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {list.map((s, i) => (
-              <ServiceCard key={s.id} service={s} index={i} />
+          <SectionHeader
+            align="center"
+            eyebrow="Le cadre d'une mission"
+            title="Ce que vous pouvez attendre de NMC"
+            subtitle="Le périmètre exact et les livrables détaillés sont définis mission par mission, dans une proposition claire validée avec vous avant tout démarrage."
+          />
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {[
+              {
+                icon: "users" as IconName,
+                title: "Une équipe dédiée",
+                text: "Des étudiants sélectionnés et formés, encadrés par le bureau pour la qualité et le respect des délais.",
+              },
+              {
+                icon: "check" as IconName,
+                title: "Une méthode structurée",
+                text: "Brief, proposition écrite, points d'étape : vous suivez l'avancement à chaque étape, sans zone d'ombre.",
+              },
+              {
+                icon: "handshake" as IconName,
+                title: "Un coût maîtrisé",
+                text: "Le statut de Junior Entreprise permet des tarifs accessibles, sans compromis sur la rigueur du travail.",
+              },
+            ].map((c, i) => (
+              <Reveal key={c.title} delay={i * 80} className="h-full">
+                <article className="card flex h-full flex-col gap-4 p-8">
+                  <span
+                    className="inline-flex h-12 w-12 items-center justify-center rounded-md"
+                    style={{ background: "rgba(162, 35, 35, 0.08)", color: "var(--color-red)" }}
+                  >
+                    <Icon name={c.icon} size={24} />
+                  </span>
+                  <h3 className="h3-display text-black">{c.title}</h3>
+                  <p className="text-sm leading-relaxed text-black/70">{c.text}</p>
+                </article>
+              </Reveal>
             ))}
-          </div>
-
-          {/* Détail livrables par service (placeholder explicite) */}
-          <div className="mt-16">
-            <SectionHeader
-              eyebrow="En détail"
-              title="Ce que comprend chaque prestation"
-              subtitle="Les livrables précis de chaque service seront publiés après validation du catalogue."
-            />
-            <div className="mt-10 grid gap-6 md:grid-cols-2">
-              {list.map((s) => (
-                <Reveal key={s.id}>
-                  <article className="card p-7">
-                    <h3 className="h3-display text-black">{s.title}</h3>
-                    <p className="mt-3 text-sm text-black/70">{s.valueProposition}</p>
-                    <ul className="mt-4 flex flex-col gap-2">
-                      {s.deliverables.map((d, di) => (
-                        <li key={di} className="flex gap-2 text-sm text-black/60">
-                          <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0" style={{ background: "var(--color-red)" }} />
-                          {d}
-                        </li>
-                      ))}
-                    </ul>
-                  </article>
-                </Reveal>
-              ))}
-            </div>
           </div>
         </div>
       </section>
@@ -133,25 +168,32 @@ export default function ServicesPage() {
       <section className="bg-white">
         <div className="container-nmc flex flex-col items-center gap-6 py-20 text-center">
           <Reveal>
-            <h2 className="h2-display max-w-3xl text-black">
-              Un besoin précis ? Parlons-en.
-            </h2>
+            <h2 className="h2-display max-w-3xl text-black">Un besoin précis ? Parlons-en.</h2>
           </Reveal>
           <Reveal delay={100}>
             <p className="max-w-xl text-black/70">
               Décrivez-nous votre problématique : nous revenons vers vous avec une première analyse
-              et une proposition adaptée.
+              et une proposition adaptée à vos moyens.
             </p>
           </Reveal>
           <Reveal delay={180}>
             <div className="flex flex-col gap-4 sm:flex-row">
               <Link href="/contact" className="btn btn-primary">
-                Demander un devis
+                Parler de mon projet
               </Link>
-              <a href={`mailto:${contact.email}`} className="btn btn-secondary">
-                {contact.email}
+              <a href={social.instagram} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
+                <Icon name="instagram" size={18} />
+                Voir nos réalisations sur Instagram
               </a>
             </div>
+          </Reveal>
+          <Reveal delay={240}>
+            <p className="text-sm text-black/50">
+              Vous pouvez aussi nous écrire directement :{" "}
+              <a href={`mailto:${contact.email}`} className="link-underline">
+                {contact.email}
+              </a>
+            </p>
           </Reveal>
         </div>
       </section>
