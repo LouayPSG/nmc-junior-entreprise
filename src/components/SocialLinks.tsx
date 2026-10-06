@@ -7,7 +7,7 @@ interface SocialLinksProps {
   className?: string;
 }
 
-/** Icônes sociales officielles (Instagram, Facebook) + site web */
+/** Icônes sociales officielles (Instagram, Facebook, LinkedIn) + site web */
 export default function SocialLinks({ variant = "dark", size = 20, className = "" }: SocialLinksProps) {
   const isLight = variant === "light";
   const base = isLight
@@ -16,6 +16,7 @@ export default function SocialLinks({ variant = "dark", size = 20, className = "
   const links = [
     { href: social.instagram, label: "Instagram NMC Junior Entreprise", icon: "instagram" as const },
     { href: social.facebook, label: "Facebook NMC Junior Entreprise", icon: "facebook" as const },
+    { href: social.linkedin, label: "LinkedIn NMC Junior Entreprise", icon: "linkedin" as const },
     { href: social.website, label: "Site web nmcje.com", icon: "globe" as const },
   ];
   return (

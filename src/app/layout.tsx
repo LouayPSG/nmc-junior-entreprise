@@ -54,7 +54,7 @@ const jsonLd = {
     postalCode: "8000",
     addressCountry: "TN",
   },
-  sameAs: [social.instagram, social.facebook],
+  sameAs: [social.instagram, social.facebook, social.linkedin],
   slogan: site.baseline,
 };
 

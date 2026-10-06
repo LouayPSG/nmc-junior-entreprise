@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 interface LogoProps {
   variant?: "dark" | "light";
@@ -7,39 +8,27 @@ interface LogoProps {
 }
 
 /**
- * Logotype texte — solution provisoire tant que le pack de logos officiel
- * n'a pas été fourni par NMC [TO CONFIRM WITH NMC: logo files].
- * Remplacer par <Image src="/assets/logo/..." /> une fois les fichiers reçus.
+ * Logotype officiel NMC.
+ * - variant "dark" : logo rouge & noir (fond clair) — navbar, en-têtes.
+ * - variant "light" : logo blanc (fond sombre) — footer, CTA noirs.
+ * Fichiers : public/assets/logo/nmc-logo.png / nmc-logo-blanc.png.
  */
 export default function Logo({ variant = "dark", href = "/", className = "" }: LogoProps) {
   const isLight = variant === "light";
   return (
     <Link
       href={href}
-      className={`group inline-flex items-baseline gap-1 no-underline ${className}`}
+      className={`group inline-flex items-center no-underline ${className}`}
       aria-label="NMC Junior Entreprise — Accueil"
     >
-      <span
-        className={`font-display text-3xl leading-none tracking-tight ${
-          isLight ? "text-white" : "text-black"
-        }`}
-      >
-        NMC
-      </span>
-      <span
-        className="font-display text-3xl leading-none tracking-tight"
-        style={{ color: "var(--color-red)" }}
-      >
-        .
-      </span>
-      <span
-        className={`hidden text-[10px] font-semibold uppercase tracking-[0.28em] sm:inline ${
-          isLight ? "text-white/70" : "text-black/60"
-        }`}
-        style={{ transform: "translateY(-2px)" }}
-      >
-        Junior Entreprise
-      </span>
+      <Image
+        src={isLight ? "/assets/logo/nmc-logo-blanc.png" : "/assets/logo/nmc-logo.png"}
+        alt="NMC — Neapolis Marketing Consulting, Junior Entreprise de la FSEGN"
+        width={92}
+        height={61}
+        priority
+        className={`w-auto transition-opacity group-hover:opacity-80 ${isLight ? "h-12 md:h-14" : "h-10 md:h-12"}`}
+      />
     </Link>
   );
 }

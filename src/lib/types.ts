@@ -14,6 +14,7 @@ export interface ContactInfo {
 export interface SocialLinks {
   instagram: string;
   facebook: string;
+  linkedin: string;
   website: string;
 }
 
