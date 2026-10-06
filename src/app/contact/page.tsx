@@ -111,8 +111,7 @@ export default function ContactPage() {
           </Reveal>
           <Reveal delay={100}>
             <div
-              className="overflow-hidden rounded-md border border-black/10 shadow-[var(--shadow-card)]"
-              style={{ aspectRatio: "16 / 7", minHeight: 320 }}
+              className="aspect-[4/3] w-full overflow-hidden rounded-md border border-black/10 shadow-[var(--shadow-card)] md:aspect-[16/7]"
             >
               <iframe
                 title="Carte — Faculté des Sciences Économiques et de Gestion de Nabeul"
