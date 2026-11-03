@@ -17,7 +17,7 @@ function initials(name: string) {
     .toUpperCase();
 }
 
-/** Carte membre du bureau exécutif — photo réelle ou monogramme tant que les photos manquent */
+/** Carte membre du bureau exécutif — photo officielle si disponible, monogramme sinon */
 export default function BoardCard({ member, index = 0 }: BoardCardProps) {
   return (
     <Reveal delay={index * 60} className="h-full">
@@ -30,9 +30,11 @@ export default function BoardCard({ member, index = 0 }: BoardCardProps) {
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={member.photo}
-              alt={`Photo de ${member.name}`}
+              alt={`Photo de ${member.name}, ${member.role.toLowerCase()} du bureau exécutif de NMC`}
               loading="lazy"
-              className="h-full w-full object-cover"
+              width={800}
+              height={1066}
+              className="h-full w-full object-cover object-[center_20%]"
             />
           ) : (
             <span className="font-display text-4xl text-[color:var(--color-red)]">

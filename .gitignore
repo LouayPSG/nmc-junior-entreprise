@@ -28,3 +28,7 @@ next-env.d.ts
 
 # freebuff internal
 /.freebuff/
+/.cloud-attachments/
+/deployment-outline.json
+/verification/
+/.env.development
