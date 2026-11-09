@@ -1,11 +1,11 @@
 {
   "board": [
-    { "name": "Yassine Chouk", "role": "Président", "photo": "/assets/equipe/yassine-chouk.jpg", "linkedin": null },
-    { "name": "Chahd Abidi", "role": "Secrétaire générale", "roleNote": "Département développement commercial (intérim)", "photo": "/assets/equipe/chahd-abidi.jpg", "linkedin": null },
-    { "name": "Souleimen Madhbouh", "role": "Trésorier", "photo": "/assets/equipe/souleimen-madhbouh.jpg", "linkedin": null },
-    { "name": "Youssef Jbeli", "role": "Responsable RH & formations", "photo": "/assets/equipe/youssef-jbeli.jpg", "linkedin": null },
-    { "name": "Ranim Ajlani", "role": "Responsable projets", "photo": "/assets/equipe/ranim-ajlani.jpg", "linkedin": null },
-    { "name": "Sirine Riahi", "role": "Responsable marketing & événementiel", "photo": "/assets/equipe/sirine-riahi.jpg", "linkedin": null }
+    { "name": "Yassine Chouk", "role": "Président", "photo": "/assets/equipe/yassine-chouk.jpg", "linkedin": "https://www.linkedin.com/in/yassine-chouk-101833398/" },
+    { "name": "Chahd Abidi", "role": "Secrétaire générale", "roleNote": "Département développement commercial (intérim)", "photo": "/assets/equipe/chahd-abidi.jpg", "linkedin": "https://www.linkedin.com/in/chahd-abidi-a51369389/" },
+    { "name": "Souleimen Madhbouh", "role": "Trésorier", "photo": "/assets/equipe/souleimen-madhbouh.jpg", "linkedin": "https://www.linkedin.com/in/souleimen-madhbouh-99a5b5394/" },
+    { "name": "Youssef Jbeli", "role": "Responsable RH & formations", "photo": "/assets/equipe/youssef-jbeli.jpg", "linkedin": "https://www.linkedin.com/in/youssef-jbeli/" },
+    { "name": "Ranim Ajlani", "role": "Responsable projets", "photo": "/assets/equipe/ranim-ajlani.jpg", "linkedin": "https://www.linkedin.com/in/ajlani-ranim-775242388/" },
+    { "name": "Sirine Riahi", "role": "Responsable marketing & événementiel", "photo": "/assets/equipe/sirine-riahi.jpg", "linkedin": "https://www.linkedin.com/in/riahi-sirine-b15751388/" }
   ],
   "departments": [
     {

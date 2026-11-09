@@ -4,7 +4,7 @@
       "id": "academique",
       "name": "Écosystème académique",
       "partners": [
-        { "name": "FSEGN — Faculté des Sciences Économiques et de Gestion de Nabeul", "logo": null, "url": null }
+        { "name": "FSEGN — Faculté des Sciences Économiques et de Gestion de Nabeul", "logo": "/assets/partners/fsegn.png", "url": null }
       ]
     }
   ]

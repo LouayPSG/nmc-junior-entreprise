@@ -43,39 +43,52 @@ Les images vont dans `public/assets/{logo,team,projects,events,partners}/`.
 
 ## Formulaire de contact
 
-Les soumissions sont livrées à **nmc.juniorentreprise@gmail.com** via [Formspree](https://formspree.io) :
+Comportement actuel (aucun compte Formspree configuré) : à la validation, le message est
+prérempli dans l'application de messagerie du visiteur (repli `mailto:`) à destination de
+**nmc.juniorentreprise@gmail.com**.
 
-1. Créer un compte Formspree avec l'e-mail NMC, récupérer l'URL du formulaire
+Pour passer à une livraison automatique par [Formspree](https://formspree.io) :
+
+1. Créer un compte Formspree avec l'e-mail NMC, créer un formulaire et copier son endpoint
    (`https://formspree.io/f/xxxxxxx`).
-2. Définir la variable d'environnement (dashboard Vercel/Netlify, jamais dans le code) :
+2. Définir la variable d'environnement dans le tableau de bord Vercel (jamais dans le code) :
    ```
    NEXT_PUBLIC_FORMSPREE_ENDPOINT=https://formspree.io/f/xxxxxxx
    ```
-3. Anti-spam : champ honeypot intégré (Formspree filtre aussi nativement).
-   Une CAPTCHA (Cloudflare Turnstile) peut être activée côté Formspree si nécessaire.
+3. Redéployer : dès que la variable est présente au build, le formulaire envoie en HTTP
+   au lieu d'ouvrir la messagerie.
 
-Sans cette variable, le formulaire affiche une erreur explicite (aucune perte silencieuse).
+Anti-spam : champ honeypot intégré. Une CAPTCHA (Cloudflare Turnstile) peut être activée
+côté Formspree si nécessaire.
 
 ## SEO & SEO local
 
-- `sitemap.xml` et `robots.txt` générés au build (base : `site.social.website` = nmcje.com)
+- `sitemap.xml` et `robots.txt` générés au build (base : `site.social.website`)
 - Metadata + Open Graph par page, JSON-LD `Organization` (cohérence NAP)
+- **Domaine** : nmcje.com n'est pas encore acquis. `site.social.website` pointe donc
+  temporairement sur `https://nmc-junior-entreprise.vercel.app` (canonical, sitemap, robots,
+  JSON-LD, lien « site web »). Le jour de l'acquisition, remplacer cette seule valeur par
+  `https://nmcje.com` puis redéployer.
 - À faire côté NMC : Google Business Profile, propriété du domaine nmcje.com
 
 ## Statut des contenus
 
-Le site public ne contient plus aucun état « Contenu à venir » ni placeholder. Ne sont publiés que des faits confirmés :
-bureau exécutif réel (6 membres), 3 expertises (Research • Strategy • Branding, conformes à la bio Instagram officielle), fondation 2018, FSEGN.
+Le site public ne contient aucun placeholder. Sont publiés : bureau exécutif réel
+(6 membres avec portraits officiels et profils LinkedIn), logos officiels NMC et FSEGN,
+3 expertises (Research • Strategy • Branding, conformes à la bio Instagram officielle),
+fondation 2018, FSEGN.
 
-Reste à fournir par NMC : photos du bureau, URLs LinkedIn des membres, endpoint Formspree (formulaire fonctionnel mais erreur explicite tant que la variable n'est pas définie),
-logo officiel (logotype texte actuel), projets/événements publiable, domaine nmcje.com.
+Reste à fournir par NMC : projets et événements publiables (avec accord écrit des clients),
+endpoint Formspree, domaine définitif.
 
 ## Déploiement
 
+Production actuelle : **https://nmc-junior-entreprise.vercel.app** (Vercel, build depuis `main`).
+
 Compatible Vercel / Netlify (zéro config) ou tout hébergeur statique :
-1. Pousser sur le dépôt Git → build automatique (`npm run build`, sortie `out/`).
-2. Pointer nmcje.com vers l'hébergeur (CNAME/A). SSL automatique.
-3. Définir `NEXT_PUBLIC_FORMSPREE_ENDPOINT` dans le tableau de bord de l'hébergeur.
+1. Pousser sur `main` → build automatique (`npm run build`, sortie `out/`).
+2. Pointer nmcje.com vers l'hébergeur (CNAME/A) quand le domaine sera acquis. SSL automatique.
+3. Définir `NEXT_PUBLIC_FORMSPREE_ENDPOINT` dans le tableau de bord de l'hébergeur, puis redéployer.
 
 ---
 

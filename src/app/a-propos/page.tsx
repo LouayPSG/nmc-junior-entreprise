@@ -127,28 +127,43 @@ export default function AboutPage() {
             {[
               {
                 icon: "users" as IconName,
+                image: null,
                 title: "Étudiants",
                 text: "Des membres de la FSEGN qui apprennent le marketing en conditions réelles et construisent leur employabilité.",
               },
               {
                 icon: "briefcase" as IconName,
+                image: null,
                 title: "Entreprises & porteurs de projets",
                 text: "Des PME, commerces et entrepreneurs du Cap Bon qui accèdent à des prestations structurées à coût maîtrisé.",
               },
               {
                 icon: "graduation" as IconName,
+                image: "/assets/partners/fsegn.png",
                 title: "FSEGN",
                 text: "La faculté qui héberge NMC et relie la formation académique au monde professionnel.",
               },
             ].map((item, i) => (
               <Reveal key={item.title} delay={i * 80} className="h-full">
                 <article className="card card-hover flex h-full flex-col gap-4 p-8 text-center">
-                  <span
-                    className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-md"
-                    style={{ background: "rgba(162,35,35,0.08)", color: "var(--color-red)" }}
-                  >
-                    <Icon name={item.icon} size={24} />
-                  </span>
+                  {item.image ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={item.image}
+                      alt="Logo de la Faculté des Sciences Économiques et de Gestion de Nabeul (FSEGN)"
+                      width={72}
+                      height={72}
+                      loading="lazy"
+                      className="mx-auto h-16 w-16 rounded-md object-contain"
+                    />
+                  ) : (
+                    <span
+                      className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-md"
+                      style={{ background: "rgba(162,35,35,0.08)", color: "var(--color-red)" }}
+                    >
+                      <Icon name={item.icon} size={24} />
+                    </span>
+                  )}
                   <h3 className="h3-display text-black">{item.title}</h3>
                   <p className="text-sm leading-relaxed text-black/70">{item.text}</p>
                 </article>
