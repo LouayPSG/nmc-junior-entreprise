@@ -2,13 +2,14 @@
 
 import { useState, type FormEvent } from "react";
 import Icon from "./Icon";
+import { contact } from "@/lib/content";
 
 /**
  * Formulaire de contact (PRD §L) — validation client + honeypot anti-spam.
- * L'envoi passe par Formspree : NEXT_PUBLIC_FORMSPREE_ENDPOINT doit être défini
- * (variable d'environnement, jamais codée en dur). Livraison : nmc.juniorentreprise@gmail.com
+ * Si NEXT_PUBLIC_FORMSPREE_ENDPOINT est défini, envoi HTTP via Formspree.
+ * Sinon, repli mailto : le message est prérempli dans la messagerie du visiteur.
  */
-type Status = "idle" | "sending" | "success" | "error";
+type Status = "idle" | "sending" | "success" | "mailto" | "error";
 
 const SUBJECTS = [
   "Devenir partenaire",
@@ -26,9 +27,26 @@ interface Errors {
   consent?: string;
 }
 
+function buildMailtoHref(form: HTMLFormElement): string {
+  const data = new FormData(form);
+  const get = (name: string) => String(data.get(name) || "").trim();
+  const body = [
+    `Nom : ${get("name")}`,
+    `E-mail : ${get("email")}`,
+    `Téléphone : ${get("phone") || "Non renseigné"}`,
+    `Organisation : ${get("organisation") || "Non renseignée"}`,
+    "",
+    get("message"),
+  ].join("\n");
+  return `mailto:${contact.email}?subject=${encodeURIComponent(
+    `[Site NMC] ${get("subject")}`,
+  )}&body=${encodeURIComponent(body)}`;
+}
+
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Errors>({});
+  const [mailtoHref, setMailtoHref] = useState<string | null>(null);
 
   const endpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
 
@@ -65,8 +83,18 @@ export default function ContactForm() {
       form.querySelector<HTMLElement>(`[name="${first}"]`)?.focus();
       return;
     }
+    const data = new FormData(form);
+    if (String(data.get("_gotcha") || "").trim()) {
+      // Honeypot rempli : soumission automatisée, on ignore sans rien envoyer.
+      setStatus("success");
+      form.reset();
+      return;
+    }
     if (!endpoint) {
-      setStatus("error");
+      const href = buildMailtoHref(form);
+      setMailtoHref(href);
+      setStatus("mailto");
+      window.location.href = href;
       return;
     }
     setStatus("sending");
@@ -82,6 +110,31 @@ export default function ContactForm() {
     } catch {
       setStatus("error");
     }
+  }
+
+  if (status === "mailto") {
+    return (
+      <div className="card flex flex-col items-center gap-4 p-10 text-center" role="status">
+        <span
+          className="inline-flex h-14 w-14 items-center justify-center rounded-full"
+          style={{ background: "rgba(162,35,35,0.1)", color: "var(--color-red)" }}
+        >
+          <Icon name="mail" size={28} />
+        </span>
+        <h3 className="h3-display text-black">Votre messagerie va s'ouvrir</h3>
+        <p className="max-w-md text-black/70">
+          Votre message est prérempli dans votre application de messagerie. Si elle ne s'ouvre
+          pas, écrivez-nous à{" "}
+          <a className="link-underline" href={mailtoHref || `mailto:${contact.email}`}>
+            {contact.email}
+          </a>{" "}
+          ou appelez le {contact.phone}.
+        </p>
+        <button type="button" className="btn btn-secondary mt-2" onClick={() => setStatus("idle")}>
+          Revenir au formulaire
+        </button>
+      </div>
+    );
   }
 
   if (status === "success") {
@@ -110,8 +163,8 @@ export default function ContactForm() {
       {status === "error" && (
         <p role="alert" className="rounded-md border border-[color:var(--color-red)] bg-[rgba(162,35,35,0.06)] p-4 text-sm text-black">
           Une erreur est survenue lors de l'envoi. Réessayez ou écrivez-nous directement à
-          <a className="link-underline ml-1" href="mailto:nmc.juniorentreprise@gmail.com">
-            nmc.juniorentreprise@gmail.com
+          <a className="link-underline ml-1" href={`mailto:${contact.email}`}>
+            {contact.email}
           </a>
           .
         </p>

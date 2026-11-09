@@ -15,7 +15,7 @@
     "instagram": "https://www.instagram.com/nmc_juniorentreprise/",
     "facebook": "https://www.facebook.com/nmcje",
     "linkedin": "https://www.linkedin.com/company/neapolis-marketing-consulting-junior-entreprise/",
-    "website": "https://nmcje.com"
+    "website": "https://nmc-junior-entreprise.vercel.app"
   },
   "nav": [
     { "label": "Accueil", "href": "/" },

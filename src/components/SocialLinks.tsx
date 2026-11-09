@@ -17,7 +17,7 @@ export default function SocialLinks({ variant = "dark", size = 20, className = "
     { href: social.instagram, label: "Instagram NMC Junior Entreprise", icon: "instagram" as const },
     { href: social.facebook, label: "Facebook NMC Junior Entreprise", icon: "facebook" as const },
     { href: social.linkedin, label: "LinkedIn NMC Junior Entreprise", icon: "linkedin" as const },
-    { href: social.website, label: "Site web nmcje.com", icon: "globe" as const },
+    { href: social.website, label: "Site web officiel de NMC", icon: "globe" as const },
   ];
   return (
     <ul className={`flex items-center gap-3 ${className}`}>
