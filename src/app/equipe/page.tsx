@@ -10,7 +10,7 @@ import { team, social } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Notre équipe — NMC Junior Entreprise",
   description:
-    "Le bureau exécutif de NMC Junior Entreprise (FSEGN Nabeul) et les départements qui font vivre la structure : développement commercial, projets, marketing & événementiel, RH & formations.",
+    "Le bureau exécutif de NMC Junior Entreprise (FSEGN Nabeul) et les départements qui font vivre la structure : développement commercial, projets, marketing & événementiel.",
   alternates: { canonical: "/equipe" },
   openGraph: {
     title: "Notre équipe — NMC Junior Entreprise",
@@ -51,7 +51,7 @@ export default function TeamPage() {
         <div className="container-nmc py-20 md:py-24">
           <SectionHeader
             eyebrow="Organisation"
-            title="Quatre départements complémentaires"
+            title="Trois départements complémentaires"
             subtitle="Chaque mission mobilise plusieurs départements : c'est ce fonctionnement transversal qui garantit le suivi commercial, la qualité des livrables et la montée en compétences des membres."
           />
           <div className="mt-12 grid gap-6 md:grid-cols-2">
@@ -95,7 +95,7 @@ export default function TeamPage() {
               },
               {
                 title: "Des formations internes régulières",
-                text: "Le département RH & formations organise des sessions de montée en compétences tout au long de l'année.",
+                text: "Des sessions de montée en compétences sont organisées tout au long de l'année, du recrutement à l'intégration des nouveaux membres.",
               },
               {
                 title: "Une transmission continue",

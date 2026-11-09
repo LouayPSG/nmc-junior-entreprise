@@ -22,7 +22,7 @@ const ACTIVITIES: { icon: IconName; title: string; text: string }[] = [
   {
     icon: "graduation",
     title: "Formations internes",
-    text: "Le département RH & formations organise des sessions régulières : méthodologie d'étude, outils du conseil, prise de parole.",
+    text: "Des sessions régulières sont organisées : méthodologie d'étude, outils du conseil, prise de parole.",
   },
   {
     icon: "spark",

@@ -151,10 +151,10 @@ export default function AboutPage() {
                     <img
                       src={item.image}
                       alt="Logo de la Faculté des Sciences Économiques et de Gestion de Nabeul (FSEGN)"
-                      width={72}
-                      height={72}
+                      width={80}
+                      height={80}
                       loading="lazy"
-                      className="mx-auto h-16 w-16 rounded-md object-contain"
+                      className="mx-auto h-20 w-20 object-contain"
                     />
                   ) : (
                     <span
